@@ -77,14 +77,15 @@ public class CustomerServiceImpl  implements CustomerService {
             List<Customer>customers = new ArrayList<>();
             List<Agency> agencies = new ArrayList<>();
 
-            customer.setAgencies(agencies);
-            agency1.setCustomers(customers);
+            customer.getAgencies().add(agency1);
+            agency1.getCustomers().add(customer);
+//            customer.setAgencies(agencies);
+//            agency1.setCustomers(customers);
 
-            customers.add(customer);
-            agencies.add(agency1);
-
-            repository.assignCustomerToAgency(agencyId, customerId);
-
+//            customers.add(customer);
+//            agencies.add(agency1);
+            repository.save(customer);
+            agency.save(agency1);
         }catch (MyException e){
             System.out.println(e.getMessage());
         }

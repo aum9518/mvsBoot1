@@ -42,8 +42,8 @@ public class BookingServiceImpl implements BookingService {
     public void updateBooking(Long id, Booking booking) {
             try{
                 Booking booking1 = repository.findById(id).orElseThrow(() -> new MyException("Booking with id: + " + id + "is not found"));
-//                booking1.setCustomerId(booking.getCustomerId());
-//                booking1.setHouseId(booking.getHouseId());
+                booking1.setCustomerId(booking.getCustomerId());
+                booking1.setHouseId(booking.getHouseId());
                 repository.save(booking1);
             }catch (MyException e){
             System.out.println(e.getMessage());

@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import peaksoft.entity.Agency;
+import peaksoft.entity.Booking;
 import peaksoft.entity.House;
 import peaksoft.exceptions.MyException;
 import peaksoft.repostiory.AgencyRepository;
@@ -72,7 +73,7 @@ public class HouseServiceImpl implements HouseService {
                repository.deleteById(id);
            }else  throw new MyException("Agency with Id: " +
                    id + " is not found ");
-           repository.findById(id);
+
        }catch (MyException e){
            System.out.println(e.getMessage());
        }
