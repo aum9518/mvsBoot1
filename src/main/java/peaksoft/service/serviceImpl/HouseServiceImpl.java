@@ -71,7 +71,7 @@ public class HouseServiceImpl implements HouseService {
            if (repository.existsById(id)){
                repository.deleteById(id);
            }else  throw new MyException("Agency with Id: " +
-                   id + " is not found");
+                   id + " is not found ");
            repository.findById(id);
        }catch (MyException e){
            System.out.println(e.getMessage());
