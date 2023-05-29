@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en,ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agency</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+          crossorigin="anonymous">
+</head>
+<body>
+<form th:action="@{saveHouse}" th:object="${house}" th:method="POST">
+    <div class="mb-3">
+        <label for="houseType" class="form-label">Select houseType</label>
+        <select class="form-select" id="houseType" name="houseType" required th:field="*{houseType}">
+            <option value="">Choose...</option>
+            <option th:each="houseType : ${T(peaksoft.enums.HouseType).values()}"
+                    th:value="${houseType}"
+                    th:text="${houseType.name()}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="Address">Address</label>
+        <input type="text" placeholder="Enter a address" th:field="*{address}" required name="address" id="address">
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="text" placeholder="Enter a price" th:field="*{price}" required name="price" id="price">
+    </div>
+    <div>
+        <label for="Room">Room</label>
+        <input type="text" placeholder="Enter a room" th:field="*{room}" required name="room" id="room">
+    </div>
+    <div>
+        <label for="country">Country</label>
+        <input type="text" placeholder="Enter a country" th:field="*{country}" required name="country" id="country">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" placeholder="Enter a description" th:field="*{description}" required name="description" id="description">
+    </div>
+    <div class="mb-3">
+        <label for="agencyName" class="form-label">Select agency</label>
+        <select class="form-select" id="agencyName" name="agencyName" required>
+            <option value="">Choose...</option>
+            <option th:each="agency : ${agencies}" th:value="${agency.id}" th:text="${agency.name}"></option>
+        </select>
+    </div>
+   <!-- <div>
+        <label for="isBooked">Is booked</label>
+        <select class="form-select" id="isBooked" name="isBooked" required th:field="*{isBooked}">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </div>-->
+    <div>
+        <label for="image">Image</label>
+        <input type="text" placeholder="Enter image" th:field="*{image}" required name="image" id="image">
+    </div>
+    <button type="submit">Save House</button>
+</form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</html>
